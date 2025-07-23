@@ -1,0 +1,6 @@
+@IT3045CFinalProject_HostAddress = http://localhost:5173
+
+GET {{IT3045CFinalProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
