@@ -1,5 +1,6 @@
 
 using IT3045CFinalProject.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT3045CFinalProject
@@ -15,10 +16,14 @@ namespace IT3045CFinalProject
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddOpenApiDocument();
+            
 
             var app = builder.Build();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -27,10 +32,7 @@ namespace IT3045CFinalProject
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
