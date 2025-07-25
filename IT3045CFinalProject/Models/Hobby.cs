@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using IT3045CFinalProject.Models;
+
 namespace IT3045C_Final.Models
 {
     public class Hobby
@@ -8,6 +11,8 @@ namespace IT3045C_Final.Models
         public string? Athletic { get; set; }
         public string? Musical { get; set; }
         public string? Academic { get; set; }
+
+        [ForeignKey(nameof(TeamMemberId))]
         public int TeamMemberId { get; set; }
         public TeamMember? TeamMember { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using IT3045CFinalProject.Data;
+using IT3045CFinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

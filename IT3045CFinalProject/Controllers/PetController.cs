@@ -1,5 +1,5 @@
-using IT3045C_Final.Data;
 using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,8 @@ namespace IT3045C_Final.Controllers
                 return await _context.Pets.Take(5).ToListAsync();
             }
 
-            var pets = await _context.Pets.Where(p => p.TeamMemberId == id).ToListAsync();
+            var pets = await _context.Pets.Where(p => p.Id == id).ToListAsync();
+
 
             if (pets == null)
             {
@@ -34,6 +35,22 @@ namespace IT3045C_Final.Controllers
 
             return pets;
         }
+
+        // GET: api/pets/teammember/5
+        [HttpGet("teammember/{id}")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByTeamMember(int id)
+        {
+            var pets = await _context.Pets.Where(p => p.TeamMemberId == id).ToListAsync();
+
+
+            if (pets == null)
+            {
+                return NotFound();
+            }
+
+            return pets;
+        }
+
 
         // POST: api/Pet
         [HttpPost]

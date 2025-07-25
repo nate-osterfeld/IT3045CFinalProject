@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Identity.Client;
 
-namespace IT3045CFinalProject.Data
+namespace IT3045CFinalProject.Models
 {
     public class TeamMember
     {
