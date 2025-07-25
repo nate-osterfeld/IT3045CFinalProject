@@ -1,5 +1,5 @@
-using IT3045C_Final.Data;
 using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,23 @@ namespace IT3045C_Final.Controllers
                 return await _context.BreakfastFood.Take(5).ToListAsync();
             }
 
-            var breakfastFood = await _context.BreakfastFood.Where(bf => bf.TeamMemberId == id).ToListAsync();
+            var breakfastFood = await _context.BreakfastFood.Where(p => p.Id == id).ToListAsync();
+
+
+            if (breakfastFood == null)
+            {
+                return NotFound();
+            }
+
+            return breakfastFood;
+        }
+
+        // GET: api/breakfastfood/teammember/5
+        [HttpGet("teammember/{id}")]
+        public async Task<ActionResult<IEnumerable<BreakfastFood>>> GetBreakfastFoodsByTeamMember(int id)
+        {
+            var breakfastFood = await _context.BreakfastFood.Where(h => h.TeamMemberId == id).ToListAsync();
+
 
             if (breakfastFood == null)
             {

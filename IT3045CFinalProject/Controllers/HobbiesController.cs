@@ -1,5 +1,5 @@
-using IT3045C_Final.Data;
 using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,23 @@ namespace IT3045C_Final.Controllers
                 return await _context.Hobbies.Take(5).ToListAsync();
             }
 
+            var hobbies = await _context.Hobbies.Where(p => p.Id == id).ToListAsync();
+
+
+            if (hobbies == null)
+            {
+                return NotFound();
+            }
+
+            return hobbies;
+        }
+
+        // GET: api/hobby/teammember/5
+        [HttpGet("teammember/{id}")]
+        public async Task<ActionResult<IEnumerable<Hobby>>> GetHobbiesByTeamMember(int id)
+        {
             var hobbies = await _context.Hobbies.Where(h => h.TeamMemberId == id).ToListAsync();
+
 
             if (hobbies == null)
             {
