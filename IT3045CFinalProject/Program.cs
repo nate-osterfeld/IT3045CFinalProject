@@ -1,5 +1,5 @@
-
 using IT3045CFinalProject.Data;
+using IT3045CFinalProject.Seeds;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +9,7 @@ namespace IT3045CFinalProject
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -18,12 +19,20 @@ namespace IT3045CFinalProject
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApiDocument();
-            
+
 
             var app = builder.Build();
 
             app.UseOpenApi();
             app.UseSwaggerUi();
+
+            // Seed data on application startup
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                DataSeeder.Seed(context);
+            }
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
