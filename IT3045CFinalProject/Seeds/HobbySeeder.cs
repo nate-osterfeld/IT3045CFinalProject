@@ -1,8 +1,7 @@
-using System.Linq;
-using IT3045C_Final.Data;
-using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
+using IT3045CFinalProject.Models;
 
-namespace IT3045C_Final.Seeds
+namespace IT3045CFinalProject.Seeds
 {
     public static class HobbySeeder
     {
@@ -20,7 +19,8 @@ namespace IT3045C_Final.Seeds
                     Athletic = "None",
                     Musical = "Singing",
                     Academic = "Reading",
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Audrey Ryser")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Audrey Ryser")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 },
                 new Hobby
                 {
@@ -29,7 +29,8 @@ namespace IT3045C_Final.Seeds
                     Athletic = "Weight Lifting",
                     Musical = "Trumpet",
                     Academic = "Reading",
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Jaxon Coniglio")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Jaxon Coniglio")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 },
                 new Hobby
                 {
@@ -38,7 +39,8 @@ namespace IT3045C_Final.Seeds
                     Athletic = "Running",
                     Musical = "Guitar",
                     Academic = "Coding",
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Silas Curry")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Silas Curry")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 }
             };
 

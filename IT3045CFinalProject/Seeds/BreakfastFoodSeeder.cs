@@ -1,8 +1,7 @@
-using System.Linq;
-using IT3045C_Final.Data;
-using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
+using IT3045CFinalProject.Models;
 
-namespace IT3045C_Final.Seeds
+namespace IT3045CFinalProject.Seeds
 {
     public static class BreakfastFoodSeeder
     {
@@ -20,7 +19,8 @@ namespace IT3045C_Final.Seeds
                     Protein = "Sausage Links",
                     Carbs = "Pancakes",
                     FruitsOrVeggies = null,
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Audrey Ryser")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Audrey Ryser")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 },
                 new BreakfastFood
                 {
@@ -29,7 +29,8 @@ namespace IT3045C_Final.Seeds
                     Protein = "Bacon",
                     Carbs = "Pancakes",
                     FruitsOrVeggies = null,
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Jaxon Coniglio")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Jaxon Coniglio")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 },
                 new BreakfastFood
                 {
@@ -38,7 +39,8 @@ namespace IT3045C_Final.Seeds
                     Protein = "Eggs",
                     Carbs = "Toast",
                     FruitsOrVeggies = "Apple",
-                    TeamMemberId = (int)(teamMembers.FirstOrDefault(m => m.FullName == "Silas Curry")?.Id)
+                    TeamMemberId = teamMembers.FirstOrDefault(m => m.FullName == "Silas Curry")?.Id ?? throw new InvalidOperationException("Missing team member")
+
                 }
             };
 

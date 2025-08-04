@@ -1,9 +1,7 @@
-using System;
-using System.Linq;
-using IT3045C_Final.Data;
-using IT3045C_Final.Models;
+using IT3045CFinalProject.Data;
+using IT3045CFinalProject.Models;
 
-namespace IT3045C_Final.Seeds
+namespace IT3045CFinalProject.Seeds
 {
     public static class TeamMemberSeeder
     {

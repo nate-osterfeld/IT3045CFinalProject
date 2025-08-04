@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Identity.Client;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IT3045CFinalProject.Models
 {

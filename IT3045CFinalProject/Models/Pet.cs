@@ -1,8 +1,7 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
-using IT3045CFinalProject.Models;
 
-namespace IT3045C_Final.Models
+namespace IT3045CFinalProject.Models
 {
     public class Pet
     {
